@@ -39,7 +39,7 @@ public class AjaxServlet extends HttpServlet {
     JSONObject json = new JSONObject(contato);
     response.setContentType("application/json;charset=UTF-8");
     try (PrintWriter out = response.getWriter()) {
-      out.printf(json.toString());
+      out.print(json.toString());
     }
   }
 
