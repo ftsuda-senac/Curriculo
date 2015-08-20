@@ -16,6 +16,10 @@ var documentReady = function (fn) {
     document.addEventListener('DOMContentLoaded', fn);
   }
 }
+// http://flatuicolors.com/
+var cores = ["#1dd2af", "#3498db", "#9b59b6", "#f1c40f", "#e67e22", "#e74c3c"];
+var i = 0;
+var interval;
 
 /*
  * Adicionar classe ao elemento.
@@ -43,6 +47,14 @@ function removeClass(el, className) {
 
 // Permite a execucao inicial das funcionalidades javascript
 documentReady(function () {
+    interval = setInterval(function() {
+        var elemento = document.getElementById("titulo");
+        elemento.style.backgroundColor = cores[i];
+        if (i === cores.length) {
+            i = 0;
+        }
+    }, 1000);
+    
   // 1) Mostar alert com o nome do curriculo
   var titulos = document.getElementsByTagName("h1");
   for (var i = 0; i < titulos.length; i++) {
