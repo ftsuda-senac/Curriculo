@@ -47,13 +47,15 @@ function removeClass(el, className) {
 
 // Permite a execucao inicial das funcionalidades javascript
 documentReady(function () {
+    i = 0;
     interval = setInterval(function() {
         var elemento = document.getElementById("titulo");
         elemento.style.backgroundColor = cores[i];
-        if (i === cores.length) {
+        i++;
+        if (i >= cores.length) {
             i = 0;
         }
-    }, 1000);
+    }, 500);
     
   // 1) Mostar alert com o nome do curriculo
   var titulos = document.getElementsByTagName("h1");
@@ -76,6 +78,9 @@ documentReady(function () {
     elements[i].addEventListener("mouseout", function () {
       removeClass(this, "info-selecionado");
     });
+    // OBS: NO ARQUIVO CSS, COLOCAR A DECLARACAO DO info-selecionado DEPOIS
+    // DO info, POIS O BROWSER VAI USAR PROPRIEDADE QUE APARECE POR ULTIMO 
+    // NO CSS
   }
 
   // 3) Adicionar uma nova seção no curriculo ao clicar no botão com id "botao1".
@@ -123,15 +128,15 @@ documentReady(function () {
     request.onload = function () {
       if (request.status >= 200 && request.status < 300) {
         // Successo!
-        var data = JSON.parse(request.responseText);
+        var dataJSON = JSON.parse(request.responseText);
         var htmlDom = "<section class=\"info\"><h2>Dados do contato</h2><ul>" +
-                "<li>ID: " + data.id + "</li>" +
-                "<li>Nome: " + data.nome + "</li>" +
-                "<li>E-mail: " + data.email + "</li>" +
+                "<li>ID: " + dataJSON.id + "</li>" +
+                "<li>Nome: " + dataJSON.nome + "</li>" +
+                "<li>E-mail: " + dataJSON.email + "</li>" +
                 "<li>Telefones:<ul>";
 
-        for (var i = 0; i < data.telefones.length; i++) {
-          htmlDom = htmlDom + "<li>" + data.telefones[i].numero + "</li>";
+        for (var i = 0; i < dataJSON.telefones.length; i++) {
+          htmlDom = htmlDom + "<li>" + dataJSON.telefones[i].numero + "</li>";
         }
         htmlDom = htmlDom + "</ul></li></ul></section>";
         document.getElementById("area3").innerHTML = htmlDom;

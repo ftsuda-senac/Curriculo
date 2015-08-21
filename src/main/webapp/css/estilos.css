@@ -73,6 +73,9 @@ h2 {
   padding: 10px 50px;
   transition: all 0.3s linear; /*permite transicao suave*/
 }
+.info2 {
+    background-color: red;
+}
 
 .info-selecionado {
   background-color: #ccc;

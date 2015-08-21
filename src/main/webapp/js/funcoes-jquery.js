@@ -15,9 +15,23 @@ $(function () { // Abreviação para $(document).ready(function() { ... });
   // e mouse out (mouse fora do elemento). Quando isso ocorre, é adicionado ou
   // removido a classe info-selecionado, que altera as propriedades visuais do
   // elemento.
+  
+  
+  /*
+  // Associa função ao evento somente nos elementos já carregados,
+  // Não associa aos elementos que serão criados.
   $(".info").on("mouseover", function (ev) {
     $(this).addClass("info-selecionado");
   }).on("mouseout", function (ev) {
+    $(this).removeClass("info-selecionado");
+  });
+  */
+  
+  // Associa função ao evento nos elementos já carregados
+  // E nos elementos que serão criados.
+  $("article").on("mouseover", ".info", function (ev) {
+    $(this).addClass("info-selecionado");
+  }).on("mouseout", ".info", function (ev) {
     $(this).removeClass("info-selecionado");
   });
 
