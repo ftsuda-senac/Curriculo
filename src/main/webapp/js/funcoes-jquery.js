@@ -4,8 +4,22 @@
  * and open the template in the editor.
  */
 
+// Variaveis globais usadas no interval.
+var interval;
+var i = 0;
+// http://flatuicolors.com/
+var cores = ["#1dd2af", "#3498db", "#9b59b6", "#f1c40f", "#e67e22", "#e74c3c"];
+
 // Permite a execucao inicial das funcionalidades javascript
 $(function () { // Abreviação para $(document).ready(function() { ... });
+
+  interval = setInterval(function () {
+    $("#titulo").css("background-color", cores[i]);
+    i++;
+    if (i >= cores.length) {
+      i = 0;
+    }
+  }, 500);
 
   // 1) Mostar alert com o nome do curriculo
   var nome = $("h1").text();
@@ -15,18 +29,17 @@ $(function () { // Abreviação para $(document).ready(function() { ... });
   // e mouse out (mouse fora do elemento). Quando isso ocorre, é adicionado ou
   // removido a classe info-selecionado, que altera as propriedades visuais do
   // elemento.
-  
-  
+
   /*
-  // Associa função ao evento somente nos elementos já carregados,
-  // Não associa aos elementos que serão criados.
-  $(".info").on("mouseover", function (ev) {
-    $(this).addClass("info-selecionado");
-  }).on("mouseout", function (ev) {
-    $(this).removeClass("info-selecionado");
-  });
-  */
-  
+   // Associa função ao evento somente nos elementos já carregados,
+   // Não associa aos elementos que serão criados.
+   $(".info").on("mouseover", function (ev) {
+   $(this).addClass("info-selecionado");
+   }).on("mouseout", function (ev) {
+   $(this).removeClass("info-selecionado");
+   });
+   */
+
   // Associa função ao evento nos elementos já carregados
   // E nos elementos que serão criados.
   $("article").on("mouseover", ".info", function (ev) {
@@ -76,22 +89,22 @@ $(function () { // Abreviação para $(document).ready(function() { ... });
     });
   });
 
-/*
-  // Versao reduzida.
-  $.getJSON("AjaxServlet", function (dataJSON) {
-    ///console.log(responseText);
-    //var data = $.parseJSON(responseText);
-    var htmlDom = "<section class=\"info\"><h2>Dados do contato</h2><ul>" +
-            "<li>ID: " + dataJSON.id + "</li>" +
-            "<li>Nome: " + dataJSON.nome + "</li>" +
-            "<li>E-mail: " + dataJSON.email + "</li>" +
-            "<li>Telefones:<ul>";
-    for (var i = 0; i < dataJSON.telefones.length; i++) {
-      htmlDom = htmlDom + "<li>" + dataJSON.telefones[i].numero + "</li>";
-    }
-    htmlDom = htmlDom + "</ul></li></ul></section>";
-    $("#area3").html(htmlDom);
-  });
-  */
+  /*
+   // Versao reduzida.
+   $.getJSON("AjaxServlet", function (dataJSON) {
+   ///console.log(responseText);
+   //var data = $.parseJSON(responseText);
+   var htmlDom = "<section class=\"info\"><h2>Dados do contato</h2><ul>" +
+   "<li>ID: " + dataJSON.id + "</li>" +
+   "<li>Nome: " + dataJSON.nome + "</li>" +
+   "<li>E-mail: " + dataJSON.email + "</li>" +
+   "<li>Telefones:<ul>";
+   for (var i = 0; i < dataJSON.telefones.length; i++) {
+   htmlDom = htmlDom + "<li>" + dataJSON.telefones[i].numero + "</li>";
+   }
+   htmlDom = htmlDom + "</ul></li></ul></section>";
+   $("#area3").html(htmlDom);
+   });
+   */
 
 });

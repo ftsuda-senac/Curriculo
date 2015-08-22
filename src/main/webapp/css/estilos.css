@@ -58,6 +58,10 @@ h2 {
   width: 100%;
 }
 
+#titulo {
+  transition: all 0.3s linear;
+}
+
 .dados > div {
   padding: 20px;
 }
