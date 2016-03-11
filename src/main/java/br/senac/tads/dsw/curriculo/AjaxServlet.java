@@ -35,7 +35,8 @@ public class AjaxServlet extends HttpServlet {
           throws ServletException, IOException {
     Telefone tel1 = new Telefone(1, "(11) 99999-9999");
     Telefone tel2 = new Telefone(2, "(11) 88888-8888");
-    Contato contato = new Contato(1, "Fulano da Silva", "fulano@zmail.com", Arrays.asList(tel1, tel2));
+    Contato contato = new Contato(1, "Fulano da Silva", 
+            "fulano@zmail.com", Arrays.asList(tel1, tel2));
     JSONObject json = new JSONObject(contato);
     response.setContentType("application/json;charset=UTF-8");
     try (PrintWriter out = response.getWriter()) {

@@ -151,5 +151,16 @@ documentReady(function () {
 
     request.send();
   });
+  
+  // 6) Validação dos campos de formulário
+  document.getElementsByTagName("form")[0].addEventListener("submit", function (evt) {
+      var valido = true;
+      valido = document.getElementById("txtnome").value !== "";
+      valido = document.getElementById("txtemail").value !== "";
+      if (!valido) {
+          evt.preventDefault();
+          alert("Preencher os campos")
+      }
+  });
 
 });
